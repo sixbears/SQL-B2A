@@ -112,7 +112,13 @@ join Invoice i on i.CustomerId = c.CustomerId
 group by c.Country`
 
 const q13 = ``
-const q14 = ``
+const q14 = `
+Select il.invoicelineid, il.invoiceid, il.trackid, il.unitprice, il.quantity, AVG(il.unitprice) 'prix moyen',
+t.Milliseconds, il.UnitPrice/t.Milliseconds*1000 'prix/sec'
+from InvoiceLine il
+join Track t on t.TrackId = il.TrackId
+group by il.invoicelineid, il.invoiceid, il.trackid, il.unitprice, il.quantity, t.Milliseconds`
+
 const q15 = ``
 const q16 = ``
 const q17 = ``
